@@ -136,8 +136,11 @@
     <p class="subtitle">SELECT YOUR GAME</p>
   </div>
   <div class="cartridges">
-    <button class="cart-btn" id="anson-btn">SuperAnsonBros.</button>
-    <button class="cart-btn" id="sonchester-btn">Sonchester</button>
+    <button class="cart-btn" id="anson-btn" onclick="openLink('https://sudo-aju.itch.io/sba')">SuperAnsonBros.</button>
+    <button class="cart-btn" id="sonchester-btn" onclick="openLink('https://sonchester.vercel.app/')">Sonchester</button>
   </div>
+  <script>
+    function openLink(url) { window.open(url, '_blank', 'noopener'); }
+  </script>
 </body>
 </html>
