@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anson's World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #131320;
+    --panel: #1c1c30;
+    --panel-hover: #24243c;
+    --ink: #f2efe4;
+    --anson: #ff5a3c;
+    --sonchester: #37c9c9;
+    --gold: #ffcf56;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 3px),
+      radial-gradient(ellipse at 50% 30%, #1e1e38 0%, var(--bg) 65%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 32px 20px;
+    font-family: 'Press Start 2P', monospace;
+    color: var(--ink);
+  }
+
+  .title-block { text-align: center; }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.4rem, 6vw, 2.2rem);
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-shadow:
+      0 0 6px var(--gold),
+      0 0 22px rgba(255, 207, 86, 0.5),
+      3px 3px 0 rgba(0,0,0,0.4);
+    animation: flicker 4.5s infinite;
+  }
+
+  .subtitle {
+    margin-top: 14px;
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    color: rgba(242, 239, 228, 0.55);
+  }
+
+  .cartridges {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .cart-btn {
+    position: relative;
+    font-family: inherit;
+    font-size: 0.85rem;
+    color: var(--ink);
+    background: var(--panel);
+    border: none;
+    border-left: 6px solid var(--accent);
+    padding: 20px 18px 20px 34px;
+    text-align: left;
+    cursor: pointer;
+    letter-spacing: 1px;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.35);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  }
+
+  .cart-btn::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-style: solid;
+    border-width: 6px 0 6px 9px;
+    border-color: transparent transparent transparent var(--accent);
+    opacity: 0;
+    transition: opacity 0.12s ease, left 0.12s ease;
+  }
+
+  .cart-btn:hover, .cart-btn:focus-visible {
+    background: var(--panel-hover);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.4);
+  }
+
+  .cart-btn:hover::before, .cart-btn:focus-visible::before {
+    opacity: 1;
+    left: 16px;
+  }
+
+  .cart-btn:active {
+    transform: translate(0, 0);
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+  }
+
+  .cart-btn:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  #anson-btn { --accent: var(--anson); }
+  #sonchester-btn { --accent: var(--sonchester); }
+
+  @keyframes flicker {
+    0%, 96%, 100% { opacity: 1; }
+    97% { opacity: 0.82; }
+    98% { opacity: 1; }
+    99% { opacity: 0.88; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    h1 { animation: none; }
+    .cart-btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="title-block">
+    <h1>Anson's World</h1>
+    <p class="subtitle">SELECT YOUR GAME</p>
+  </div>
+  <div class="cartridges">
+    <button class="cart-btn" id="anson-btn">SuperAnsonBros.</button>
+    <button class="cart-btn" id="sonchester-btn">Sonchester</button>
+  </div>
+</body>
+</html>
